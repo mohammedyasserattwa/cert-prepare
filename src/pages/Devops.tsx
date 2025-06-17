@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import questionsData from '../assets/devops_questions.json';
 
 // Define the shape of a question
