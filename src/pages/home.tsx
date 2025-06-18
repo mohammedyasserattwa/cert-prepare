@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Navbar } from '../components/Navbar';
-import { AcePrep } from './Ace';
-import { Devops } from './Devops';
-import { DataBricksDataEngineer } from './DBDataEng';
+import  AcePrep  from './Ace';
+import  Devops  from './Devops';
+import  DataBricksDataEngineer  from './DBDataEng';
 
 
 export const Home = () => {
