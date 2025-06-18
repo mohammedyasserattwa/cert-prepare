@@ -207,7 +207,7 @@
         "question_number": 18,
         "question": "You need to set up a policy so that videos stored in a specific Cloud Storage Regional bucket are moved to Coldline after 90 days, and then deleted after one year from their creation. How should you set up the policy?",
         "answers": [
-            "A. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 275 days (365 \u05d2\u20ac\" 90)",
+            "A. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 275 days (365 / 90)",
             "B. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 365 days.",
             "C. Use gsutil rewrite and set the Delete action to 275 days (365-90).",
             "D. Use gsutil rewrite and set the Delete action to 365 days."
@@ -258,7 +258,7 @@
             "A. Use granular logging statements within a Deployment Manager template authored in Python.",
             "B. Monitor activity of the Deployment Manager execution on the Stackdriver Logging page of the GCP Console.",
             "C. Execute the Deployment Manager template against a separate project with the same configuration, and monitor for failures.",
-            "D. Execute the Deployment Manager template using the \u05d2\u20ac\"-preview option in the same project, and observe the state of interdependent resources."
+            "D. Execute the Deployment Manager template using the -preview option in the same project, and observe the state of interdependent resources."
         ],
         "correct_answer": "D",
         "category": "CI/CD & Deployment"

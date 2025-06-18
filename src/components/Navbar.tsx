@@ -33,7 +33,7 @@ export const Navbar = ({ selected, onSelect } : NavbarProps) => {
   if (shrinked) {
     return (
       <div
-        className="h-fit md:h-[96%] min-w-[15px] max-w-[80px] m-0 md:m-5 rounded-md bg-[#2b3533] text-white flex flex-col items-center justify-start p-4 cursor-pointer select-none z-10"
+        className="fixed h-fit md:h-[96%] min-w-[15px] max-w-[80px] m-0 md:m-5 rounded-md bg-[#2b3533] text-white flex flex-col items-center justify-start p-4 cursor-pointer select-none z-10"
         style={{ minHeight: '30px' }}
         onClick={() => setShrinked(false)}
         title="Expand navbar"
@@ -44,7 +44,7 @@ export const Navbar = ({ selected, onSelect } : NavbarProps) => {
   }
 
   return (
-    <div className="fixed md:relative z-10 m-1 min-w-[96%] md:min-w-[20%] md:m-[5%] rounded-md bg-[#2b3533] text-white flex flex-col gap-2 p-4 min-h-screen md:min-h-[96%]">
+    <div className="fixed md:fixed z-10 m-1 min-w-[96%] md:max-w-[20%] md:min-w-[20%] md:top-5 md:left-5 rounded-md bg-[#2b3533] text-white flex flex-col gap-2 p-4 min-h-[96%]">
       <button
         className="absolute top-2 right-2 text-white text-2xl px-2 py-1 rounded hover:bg-[#181d1c] transition"
         onClick={() => setShrinked(true)}
@@ -71,6 +71,12 @@ export const Navbar = ({ selected, onSelect } : NavbarProps) => {
       >
         GCP Professional DevOps Engineer
       </button>
+      <button
+        className={ (selected === "dbdataeng" ? unselectedStyle : selectedStyle) +" bg-[#181d1c] text-white px-4 py-2 rounded"}
+        onClick={() => handleSelect("dbdataeng")}
+        >
+          DataBricks Data Engineer
+        </button>
     </div>
   );
 };

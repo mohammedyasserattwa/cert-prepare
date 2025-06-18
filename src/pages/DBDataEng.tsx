@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import questionsData from '../assets/all_questions.json';
+import questionsData from '../assets/data_eng_questions.json';
 
 // Define the shape of a question
 type Question = {
@@ -95,11 +95,11 @@ const formatQuestionText = (text: string) =>
 // Helper to check if a question has multiple correct answers
 const isMultiAnswer = (correct: string) => correct.length > 1;
 
-export const AcePrep = () => {
+export const DataBricksDataEngineer = () => {
   const [numQuestions, setNumQuestions] = useState<number>(0);
   const [mode, setMode] = useState<'exam' | 'practice' | null>(null);
   const [usedQuestions, setUsedQuestions] = useState<number[]>(() => {
-    const saved = localStorage.getItem("usedQuestions");
+    const saved = localStorage.getItem('DBUsedQuestions');
     return saved ? JSON.parse(saved) : [];
   });
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -120,7 +120,7 @@ export const AcePrep = () => {
   >([]);
 
   useEffect(() => {
-    localStorage.setItem('usedQuestions', JSON.stringify(usedQuestions));
+    localStorage.setItem('DBUsedQuestions', JSON.stringify(usedQuestions));
   }, [usedQuestions]);
 
   const startExam = () => {
@@ -210,7 +210,7 @@ const handleAnswerPractice = (letter: string) => {
 
   const resetUsedQuestions = () => {
     setUsedQuestions([]);
-    localStorage.removeItem('usedQuestions');
+    localStorage.removeItem('DBUsedQuestions');
   };
 
   const cancelSession = () => {
@@ -255,8 +255,8 @@ const handleAnswerPractice = (letter: string) => {
   if (!mode) {
     return (
       <div className="min-h-full md:ml-[25%] md:max-w-[70%] mt-12 md:mt-0 flex flex-col justify-stretch items-center bg-[#181d1c] px-2">
-        <h1 className="text-2xl md:text-3xl font-bold text-center text-white">
-          GCP Associate Cloud Engineer Exam Prep
+        <h1 className="text-2xl md:text-3xl font-bold text-center text-green-500">
+          DataBricks Data Engineer Exam Prep
         </h1>
         <p className="text-sm mb-5 text-gray-300 text-center max-w-xl">
           Prepare for your exam with some previous exam questions. Choose your

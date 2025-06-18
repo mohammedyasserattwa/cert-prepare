@@ -30,6 +30,68 @@ const formatQuestionText = (text: string) =>
     ) : null
   );
 
+  const formatAnswerText = (answer: string) => {
+  // Multi-step/bullet answer
+  if (/\d+\.\s/.test(answer) || answer.includes('\u05d2\u20ac\u00a2')) {
+    // Extract the letter (A., B., etc.) if present
+    const match = answer.match(/^([A-D]\.)\s*/);
+    const letter = match ? match[1] : null;
+    const rest = match ? answer.slice(match[0].length) : answer;
+
+    // Split into steps (if any)
+    const steps = rest.split(/(?=\d+\.\s)/g).filter(Boolean);
+
+    // For each step, split on the unicode bullet
+    const bullets = steps.length > 0
+      ? steps.flatMap(step => step.split('\u05d2\u20ac\u00a2').map(s => s.trim()).filter(Boolean))
+      : rest.split('\u05d2\u20ac\u00a2').map(s => s.trim()).filter(Boolean);
+
+    return (
+      <div className="rounded-lg px-4 py-3">
+        {letter && (
+          <span className="font-bold text-white mb-2 block">{letter}</span>
+        )}
+        <ul className="list-disc list-inside space-y-1 ml-2 pl-6">
+          {bullets.map((b, i) =>
+            /^\d+\.\s/.test(b) ? (
+              <div key={i} className="ml-[-1.2em] font-semibold text-white">{b}</div>
+            ) : (
+              <li key={i} className="text-white">{b}</li>
+            )
+          )}
+        </ul>
+      </div>
+    );
+  }
+
+  // Inline code formatting for special unicode
+  const parts = answer.split('\u05d2\u20ac');
+  return (
+    <span>
+      {parts.map((part, idx) =>
+        idx % 2 === 1 ? (
+          <span
+            key={idx}
+            style={{
+              fontFamily: 'Consolas, monospace',
+              background: '#2d3748',
+              color: '#60a5fa',
+              padding: '2px 6px',
+              borderRadius: '4px',
+              margin: '0 2px',
+              fontSize: '0.98em',
+            }}
+          >
+            {part.trim()}
+          </span>
+        ) : (
+          <span key={idx}>{part.trim()}</span>
+        )
+      )}
+    </span>
+  );
+};
+
 // Helper to check if a question has multiple correct answers
 const isMultiAnswer = (correct: string) => correct.length > 1;
 
@@ -192,11 +254,11 @@ const handleAnswerPractice = (letter: string) => {
 
   if (!mode) {
     return (
-      <div className="min-h-full flex flex-col justify-stretch py-5 items-center bg-[#181d1c] px-2">
-        <h1 className="text-2xl md:text-3xl text-blue-400 font-bold text-center ">
+      <div className="min-h-full md:ml-[25%] md:max-w-[70%] mt-12 md:mt-0 flex flex-col justify-stretch items-center bg-[#181d1c] px-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-center text-blue-500">
           GCP Professional DevOps Exam Prep
         </h1>
-        <p className="text-sm mb-10 text-gray-300 text-center max-w-xl">
+        <p className="text-sm mb-5 text-gray-300 text-center max-w-xl">
           Prepare for your exam with some previous exam questions. Choose your
           mode and start practicing!
         </p>
@@ -236,9 +298,9 @@ const handleAnswerPractice = (letter: string) => {
             Reset Used Questions
           </button>
         </div>
-        <h2 className="w-full max-w-7xl text-left mb-10 text-white">Choose Your Mode: </h2>
-        <div className="flex flex-col md:flex-row w-full  justify-center items-center gap-5">
-          <div className="w-full md:w-1/2 lg:w-1/3 h-[30vh] rounded-md p-6 md:p-10 bg-[#2b3533] flex flex-col justify-between mb-5 md:mb-0">
+        <h2 className="w-full max-w-full text-left mb-5 text-white">Choose Your Mode: </h2>
+        <div className="flex flex-col md:flex-row w-full md:max-w-[100%] min-h-[40vh] justify-stretch items-stretch gap-2 mb-5">
+          <div className="w-[100%] min-h-full rounded-md p-6 md:p-8 bg-[#2b3533] flex flex-col justify-between mb-5 md:mb-0">
             <div>
               <h3 className="text-left font-semibold text-lg text-white">Exam Mode</h3>
               <p className='text-left text-sm text-gray-300'>Mimic the exam experience with the number of questions you want
@@ -279,7 +341,7 @@ const handleAnswerPractice = (letter: string) => {
               </button>
             </div>
           </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 h-[30vh] rounded-md p-6 md:p-10 bg-[#2b3533] flex flex-col justify-between">
+          <div className="w-[100%] min-h-full rounded-md p-6 md:p-10 bg-[#2b3533] flex flex-col justify-between">
             <div>
               <h3 className="text-left font-semibold text-lg text-white">Practice Mode</h3>
               <p className='text-left text-sm text-gray-300'>Friendly practice with all the questions we have. Answers are shown after you try!</p>
@@ -292,7 +354,6 @@ const handleAnswerPractice = (letter: string) => {
             </button>
           </div>
         </div>
-        <div className="flex gap-2"></div>
       </div>
     );
   }
@@ -490,8 +551,8 @@ const handleAnswerPractice = (letter: string) => {
                 }
                 className={`cursor-pointer w-full flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-150 ${bg} ${text} ${border} ${ring} hover:border-[#4db6ac] focus:outline-none`}
               >
-                <span className="font-bold">{letter}.</span>
-                <span className="text-left">{answer}</span>
+                
+                <span className="text-left">{formatAnswerText(answer)}</span>
                 {isSelected && mode === "exam" && (
                   <span className="ml-2 text-[#4db6ac] font-semibold text-xs bg-[#232726] px-2 py-0.5 rounded">
                     Selected
