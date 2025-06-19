@@ -126,9 +126,8 @@ export function ExamPrep({
         const next = prev.includes(letter)
           ? prev.filter(l => l !== letter)
           : [...prev, letter];
-        if (next.length === currentQuestion.correct_answer.length) {
           setUsedQuestions(prevUsed => [...new Set([...prevUsed, currentQuestion.question_number])]);
-        }
+          
         return next;
       });
     } else {

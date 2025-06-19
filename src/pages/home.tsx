@@ -3,6 +3,7 @@ import { Navbar } from '../components/Navbar';
 import  AcePrep  from './Ace';
 import  Devops  from './Devops';
 import  DataBricksDataEngineer  from './DBDataEng';
+import GCPDataEng from './GCPDataEng';
 
 
 export const Home = () => {
@@ -17,6 +18,7 @@ export const Home = () => {
         {selected === "ace" && <AcePrep />}
         {selected === "devops" && <Devops />}
         {selected === "dbdataeng" && <DataBricksDataEngineer />}
+        {selected === "gcpdataeng" && <GCPDataEng />}
       </div>
     </div>
   );

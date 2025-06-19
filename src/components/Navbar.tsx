@@ -77,6 +77,12 @@ export const Navbar = ({ selected, onSelect } : NavbarProps) => {
         >
           DataBricks Data Engineer
         </button>
+        <button
+        className={ (selected === "gcpdataeng" ? unselectedStyle : selectedStyle) +" bg-[#181d1c] text-white px-4 py-2 rounded"}
+        onClick={() => handleSelect("gcpdataeng")}
+        >
+          GCP Professional Data Engineer
+        </button>
     </div>
   );
 };
