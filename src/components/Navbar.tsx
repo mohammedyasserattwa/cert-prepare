@@ -83,6 +83,13 @@ export const Navbar = ({ selected, onSelect } : NavbarProps) => {
         >
           GCP Professional Data Engineer
         </button>
+        <button
+        className={ (selected === "gcpmleng" ? unselectedStyle : selectedStyle) +" bg-[#181d1c] text-white px-4 py-2 rounded"}
+        onClick={() => handleSelect("gcpmleng")}
+        >
+          GCP Professional Machine Learning Engineer
+        </button>
+
     </div>
   );
 };

@@ -4,6 +4,7 @@ import  AcePrep  from './Ace';
 import  Devops  from './Devops';
 import  DataBricksDataEngineer  from './DBDataEng';
 import GCPDataEng from './GCPDataEng';
+import { GCPMLEng } from './GCPMLEng';
 
 
 export const Home = () => {
@@ -19,6 +20,7 @@ export const Home = () => {
         {selected === "devops" && <Devops />}
         {selected === "dbdataeng" && <DataBricksDataEngineer />}
         {selected === "gcpdataeng" && <GCPDataEng />}
+        {selected === "gcpmleng" && <GCPMLEng />}
       </div>
     </div>
   );
