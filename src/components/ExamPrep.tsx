@@ -9,6 +9,7 @@ export interface ExamQuestionType {
   question: string;
   answers: string[];
   correct_answer: string;
+  category?: string;
 }
 
 interface ExamPrepProps {

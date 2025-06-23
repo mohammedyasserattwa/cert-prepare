@@ -89,6 +89,12 @@ export const Navbar = ({ selected, onSelect } : NavbarProps) => {
         >
           GCP Professional Machine Learning Engineer
         </button>
+        <button
+        className={ (selected === "dbgenai" ? unselectedStyle : selectedStyle) +" bg-[#181d1c] text-white px-4 py-2 rounded"}
+        onClick={() => handleSelect("dbgenai")}
+        >
+          DataBricks Generative AI Engineer
+        </button>
 
     </div>
   );

@@ -1,0 +1,1069 @@
+[
+  {
+    "question_number": 1,
+    "question": "A Generative AI Engineer has created a RAG application to look up answers to questions about a series of fantasy novels that are being asked on the author's web forum. The fantasy novel texts are chunked and embedded into a vector store with metadata (page number, chapter number, book title), retrieved with the user’s query, and provided to an LLM for response generation. The Generative AI Engineer used their intuition to pick the chunking strategy and associated configurations but now wants to more methodically choose the best values. Which TWO strategies should the Generative AI Engineer take to optimize their chunking strategy and parameters? (Choose two.)",
+    "answers": [
+      "A. Change embedding models and compare performance.",
+      "B. Add a classifier for user queries that predicts which book will best contain the answer. Use this to filter retrieval.",
+      "C. Choose an appropriate evaluation metric (such as recall or NDCG) and experiment with changes in the chunking strategy, such as splitting chunks by paragraphs or chapters. Choose the strategy that gives the best performance metric.",
+      "D. Pass known questions and best answers to an LLM and instruct the LLM to provide the best token count. Use a summary statistic (mean, median, etc.) of the best token counts to choose chunk size.",
+      "E. Create an LLM-as-a-judge metric to evaluate how well previous questions are answered by the most appropriate chunk. Optimize the chunking parameters based upon the values of the metric."
+    ],
+    "correct_answer": "CE",
+    "category": "RAG Optimization"
+  },
+  {
+    "question_number": 2,
+    "question": "A Generative AI Engineer is designing a RAG application for answering user questions on technical regulations as they learn a new sport. What are the steps needed to build this RAG application and deploy it?",
+    "answers": [
+      "A. Ingest documents from a source -> Index the documents and saves to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> Evaluate model -> LLM generates a response —> Deploy it using Model Serving",
+      "B. Ingest documents from a source -> Index the documents and save to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> LLM generates a response -> Evaluate model -> Deploy it using Model Serving",
+      "C. Ingest documents from a source —> Index the documents and save to Vector Search -> Evaluate model -> Deploy it using Model Serving",
+      "D. User submits queries against an LLM -> Ingest documents from a source —> Index the documents and save to Vector Search -> LLM retrieves relevant documents —> LLM generates a response —> Evaluate model -> Deploy it using Model Serving"
+    ],
+    "correct_answer": "B",
+    "category": "RAG Deployment"
+  },
+  {
+    "question_number": 3,
+    "question": "A Generative AI Engineer just deployed an LLM application at a digital marketing company that assists with answering customer service inquiries. Which metric should they monitor for their customer service LLM application in production?",
+    "answers": [
+      "A. Number of customer inquiries processed per unit of time",
+      "B. Energy usage per query",
+      "C. Final perplexity scores for the training of the model",
+      "D. HuggingFace Leaderboard values for the base LLM"
+    ],
+    "correct_answer": "A",
+    "category": "Monitoring & Metrics"
+  },
+  {
+    "question_number": 4,
+    "question": "A Generative AI Engineer is building a Generative AI system that suggests the best matched employee team member to newly scoped projects. The team member is selected from a very large team. The match should be based upon project date availability and how well their employee profile matches the project scope. Both the employee profile and project scope are unstructured text. How should the Generative AI Engineer architect their system?",
+    "answers": [
+      "A. Create a tool for finding available team members given project dates. Embed all project scopes into a vector store, perform a retrieval using team member profiles to find the best team member.",
+      "B. Create a tool for finding team member availability given project dates, and another tool that uses an LLM to extract keywords from project scopes. Iterate through available team members’ profiles and perform keyword matching to find the best available team member.",
+      "C. Create a tool to find available team members given project dates. Create a second tool that can calculate a similarity score for a combination of team member profile and the project scope. Iterate through the team members and rank by best score to select a team member.",
+      "D. Create a tool for finding available team members given project dates. Embed team profiles into a vector store and use the project scope and filtering to perform retrieval to find the available best matched team members."
+    ],
+    "correct_answer": "D",
+    "category": "LLM System Design"
+  },
+   {
+    "question_number": 5,
+    "question": "A Generative AI Engineer is testing a simple prompt template in LangChain using the code below, but is getting an error. What change does the Generative AI Engineer need to make to fix their chain?",
+    "answers": [
+      "A. template=prompt_template\n\nllm = LLMChain(prompt=prompt)\nllm.generate(\"funny\")",
+      "B. template=prompt_template\n\nllm = LLMChain(prompt=prompt.format(\"funny\"))\nllm.generate()",
+      "C. llm=OpenAI()\n\nllm = LLMChain(prompt=prompt)\nllm.generate([{\"adjective\": \"funny\"}])",
+      "D. template=prompt_template\n\nllm = LLMChain(llm=OpenAI(), prompt=prompt)\nllm.generate([{\"adjective\": \"funny\"}])"
+    ],
+    "correct_answer": "D",
+    "category": "LangChain / Prompt Engineering"
+  },
+  {
+    "question_number": 6,
+    "question": "A Generative AI Engineer is creating an LLM system that will retrieve news articles from the year 1918 and related to a user's query and summarize them. The engineer has noticed that the summaries are generated well but often also include an explanation of how the summary was generated, which is undesirable. Which change could the Generative AI Engineer perform to mitigate this issue?",
+    "answers": [
+      "A. Split the LLM output by newline characters to truncate away the summarization explanation.",
+      "B. Tune the chunk size of news articles or experiment with different embedding models.",
+      "C. Revisit their document ingestion logic, ensuring that the news articles are being ingested properly.",
+      "D. Provide few shot examples of desired output format to the system and/or user prompt."
+    ],
+    "correct_answer": "D",
+    "category": "Prompt Engineering"
+  },
+  {
+    "question_number": 7,
+    "question": "A Generative AI Engineer has developed an LLM application to answer questions about internal company policies. The Generative AI Engineer must ensure that the application doesn't hallucinate or leak confidential data. Which approach should NOT be used to mitigate hallucination or confidential data leakage?",
+    "answers": [
+      "A. Add guardrails to filter outputs from the LLM before it is shown to the user",
+      "B. Fine-tune the model on your data, hoping it will learn what is appropriate and not",
+      "C. Limit the data available based on the user's access level",
+      "D. Use a strong system prompt to ensure the model aligns with your needs."
+    ],
+    "correct_answer": "B",
+    "category": "LLM Security & Risk"
+  },
+  {
+    "question_number": 8,
+    "question": "A Generative AI Engineer interfaces with an LLM with prompt/response behavior that has been trained on customer calls inquiring about product availability. The LLM is designed to output “In Stock” if the product is available or only the term “Out of Stock” if not. Which prompt will work to allow the engineer to respond to call classification labels correctly?",
+    "answers": [
+      "A. Respond with “In Stock” if the customer asks for a product.",
+      "B. You will be given a customer call transcript where the customer asks about product availability. The outputs are either “In Stock” or “Out of Stock”. Format the output in JSON, for example: {\"call_id\": \"123\", \"label\": \"In Stock\"}.",
+      "C. Respond with “Out of Stock” if the customer asks for a product.",
+      "D. You will be given a customer call transcript where the customer inquires about product availability. Respond with “In Stock” if the product is available or “Out of Stock” if not."
+    ],
+    "correct_answer": "D",
+    "category": "LLM Prompt Classification"
+  },
+  
+  {
+    "question_number": 9,
+    "question": "A Generative AI Engineer is tasked with developing a RAG application that will help a small internal group of experts at their company answer specific questions, augmented by an internal knowledge base. They want the best possible quality in the answers, and neither latency nor throughput is a huge concern given that the user group is small and they're willing to wait for the best answer. The topics are sensitive in nature and the data is highly confidential and so, due to regulatory requirements, none of the information is allowed to be transmitted to third parties. Which model meets all the Generative AI Engineer's needs in this situation?",
+    "answers": [
+      "A. Dolly 1.5B",
+      "B. OpenAI GPT-4",
+      "C. BGE-large",
+      "D. Llama2-70B"
+    ],
+    "correct_answer": "D",
+    "category": "Model Selection"
+  },
+  {
+    "question_number": 10,
+    "question": "A Generative AI Engineer would like an LLM to generate formatted JSON from emails. This will require parsing and extracting the following information: order ID, date, and sender email. Which prompt will do that?",
+    "answers": [
+      "A. You will receive customer emails and need to extract date, sender email, and order ID. You should return the date, sender email, and order ID information in JSON format.",
+      "B. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here's an example: {\"date\": \"April 16, 2024\", \"sender_email\": \"sarah.lee925@gmail.com\", \"order_id\": \"RE987D\"}",
+      "C. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in a human-readable format.",
+      "D. You will receive customer emails and need to extract date, sender email, and order. Return the extracted information in JSON format."
+    ],
+    "correct_answer": "B",
+    "category": "Prompt Design"
+  },
+  {
+    "question_number": 11,
+    "question": "A Generative AI Engineer has been asked to build an LLM-based question-answering application. The application should take into account new documents that are frequently published. The engineer wants to build this application with the least cost and least development effort and have it operate at the lowest cost possible. Which combination of chaining components and configuration meets these requirements?",
+    "answers": [
+      "A. For the application a prompt, a retriever, and an LLM are required. The retriever output is inserted into the prompt which is given to the LLM to generate answers.",
+      "B. The LLM needs to be frequently with the new documents in order to provide most up-to-date answers.",
+      "C. For the question-answering application, prompt engineering and an LLM are required to generate answers.",
+      "D. For the application a prompt, an agent and a fine-tuned LLM are required. The agent is used by the LLM to retrieve relevant content that is inserted into the prompt which is given to the LLM to generate answers."
+    ],
+    "correct_answer": "A",
+    "category": "RAG Application Architecture"
+  },
+  {
+    "question_number": 12,
+    "question": "A Generative AI Engineer is creating an agent-based LLM system for their favorite monster truck team. The system can answer text based questions about the monster truck team, lookup event dates via an API call, or query tables on the team’s latest standings. How could the Generative AI Engineer best design these capabilities into their system?",
+    "answers": [
+      "A. Ingest PDF documents about the monster truck team into a vector store and query it in a RAG architecture.",
+      "B. Write a system prompt for the agent listing available tools and bundle it into an agent system that runs a number of calls to solve a query.",
+      "C. Instruct the LLM to respond with “RAG”, “API”, or “TABLE” depending on the query, then use text parsing and conditional statements to resolve the query.",
+      "D. Build a system prompt with all possible event dates and table information in the system prompt. Use a RAG architecture to lookup generic text questions and otherwise leverage the information in the system prompt."
+    ],
+    "correct_answer": "B",
+    "category": "Agent Design"
+  },
+    {
+    "question_number": 13,
+    "question": "A Generative AI Engineer is testing a simple prompt template in LangChain using the code below, but is getting an error. Assuming the API key was properly defined, what change does the Generative AI Engineer need to make to fix their chain?",
+    "answers": [
+      "A. template=prompt_template\n\nllm = LLMChain(prompt=prompt)\nllm.generate(\"funny\")",
+      "B. template=prompt_template\n\nllm = LLMChain(prompt=prompt.format(\"funny\"))\nllm.generate()",
+      "C. llm = OpenAI()\n\nllm = LLMChain(prompt=prompt)\nllm.generate([{ \"adjective\": \"funny\" }])",
+      "D. template=prompt_template\n\nllm = LLMChain(llm=OpenAI(), prompt=prompt)\nllm.generate([{ \"adjective\": \"funny\" }])"
+    ],
+    "correct_answer": "D",
+    "category": "LangChain / Debugging"
+  },
+  {
+    "question_number": 14,
+    "question": "A Generative AI Engineer is creating an LLM system that will retrieve news articles from the year 1918 and related to a user's query and summarize them. The engineer has noticed that the summaries are generated well but often also include an explanation of how the summary was generated, which is undesirable. Which change could the Generative AI Engineer perform to mitigate this issue?",
+    "answers": [
+      "A. Split the LLM output by newline characters to truncate away the summarization explanation.",
+      "B. Tune the chunk size of news articles or experiment with different embedding models.",
+      "C. Revisit their document ingestion logic, ensuring that the news articles are being ingested properly.",
+      "D. Provide few shot examples of desired output format to the system and/or user prompt."
+    ],
+    "correct_answer": "D",
+    "category": "Prompt Engineering"
+  },
+  {
+    "question_number": 15,
+    "question": "A Generative AI Engineer has developed an LLM application to answer questions about internal company policies. The Generative AI Engineer must ensure that the application doesn't hallucinate or leak confidential data. Which approach should NOT be used to mitigate hallucination or confidential data leakage?",
+    "answers": [
+      "A. Add guardrails to filter outputs from the LLM before it is shown to the user",
+      "B. Fine-tune the model on your data, hoping it will learn what is appropriate and not",
+      "C. Limit the data available based on the user's access level",
+      "D. Use a strong system prompt to ensure the model aligns with your needs."
+    ],
+    "correct_answer": "B",
+    "category": "Security / Data Privacy"
+  },
+  {
+    "question_number": 16,
+    "question": "A Generative AI Engineer interfaces with an LLM with prompt/response behavior that has been trained on customer calls inquiring about product availability. The LLM is designed to output “In Stock” if the product is available or only the term “Out of Stock” if not. Which prompt will work to allow the engineer to respond to call classification labels correctly?",
+    "answers": [
+      "A. Respond with “In Stock” if the customer asks for a product.",
+      "B. You will be given a customer call transcript where the customer asks about product availability. The outputs are either “In Stock” or “Out of Stock”. Format the output in JSON, for example: {\"call_id\": \"123\", \"label\": \"In Stock\"}.",
+      "C. Respond with “Out of Stock” if the customer asks for a product.",
+      "D. You will be given a customer call transcript where the customer inquires about product availability. Respond with “In Stock” if the product is available or “Out of Stock” if not."
+    ],
+    "correct_answer": "D",
+    "category": "Prompt Classification"
+  },
+  
+  {
+    "question_number": 17,
+    "question": "A Generative AI Engineer is tasked with developing a RAG application that will help a small internal group of experts at their company answer specific questions, augmented by an internal knowledge base. They want the best possible quality in the answers, and neither latency nor throughput is a huge concern given that the user group is small and they're willing to wait for the best answer. The topics are sensitive in nature and the data is highly confidential and so, due to regulatory requirements, none of the information is allowed to be transmitted to third parties. Which model meets all the Generative AI Engineer's needs in this situation?",
+    "answers": [
+      "A. Dolly 1.5B",
+      "B. OpenAI GPT-4",
+      "C. BGE-large",
+      "D. Llama2-70B"
+    ],
+    "correct_answer": "D",
+    "category": "Model Selection"
+  },
+  {
+    "question_number": 18,
+    "question": "A Generative AI Engineer would like an LLM to generate formatted JSON from emails. This will require parsing and extracting the following information: order ID, date, and sender email. Here’s a sample email:\n\nDate: April 23, 2024\nTime: 4:22 PM\nFrom: anjali.thayer@computex.org\nTo: cust_service@realtek.com\nSubject: Shipment details\n\nHey there,\nI have a shipment (order ID is CD34RFT) can you please send me an update?\n\nThank you,\n\nAnjali\n\nThey will need to write a prompt that will extract the relevant information in JSON format with the highest level of output accuracy. Which prompt will do that?",
+    "answers": [
+      "A. You will receive customer emails and need to extract date, sender email, and order ID. You should return the date, sender email, and order ID information in JSON format.",
+      "B. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here's an example: {\"date\": \"April 16, 2024\", \"sender_email\": \"sarah.lee925@gmail.com\", \"order_id\": \"RE987D\"}",
+      "C. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in a human-readable format.",
+      "D. You will receive customer emails and need to extract date, sender email, and order. Return the extracted information in JSON format."
+    ],
+    "correct_answer": "B",
+    "category": "Prompt Engineering / Extraction"
+  },
+  {
+    "question_number": 19,
+    "question": "A Generative AI Engineer has been asked to build an LLM-based question-answering application. The application should take into account new documents that are frequently published. The engineer wants to build this application with the least cost and least development effort and have it operate at the lowest cost possible. Which combination of chaining components and configuration meets these requirements?",
+    "answers": [
+      "A. For the application a prompt, a retriever, and an LLM are required. The retriever output is inserted into the prompt which is given to the LLM to generate answers.",
+      "B. The LLM needs to be frequently trained with the new documents in order to provide most up-to-date answers.",
+      "C. For the question-answering application, prompt engineering and an LLM are required to generate answers.",
+      "D. For the application a prompt, an agent and a fine-tuned LLM are required. The agent is used by the LLM to retrieve relevant content that is inserted into the prompt which is given to the LLM to generate answers."
+    ],
+    "correct_answer": "A",
+    "category": "RAG System Design"
+  },
+  {
+    "question_number": 20,
+    "question": "A Generative AI Engineer is creating an agent-based LLM system for their favorite monster truck team. The system can answer text-based questions about the monster truck team, look up event dates via an API call, or query tables on the team’s latest standings. How could the Generative AI Engineer best design these capabilities into their system?",
+    "answers": [
+      "A. Ingest PDF documents about the monster truck team into a vector store and query it in a RAG architecture.",
+      "B. Write a system prompt for the agent listing available tools and bundle it into an agent system that runs a number of calls to solve a query.",
+      "C. Instruct the LLM to respond with “RAG”, “API”, or “TABLE” depending on the query, then use text parsing and conditional statements to resolve the query.",
+      "D. Build a system prompt with all possible event dates and table information in the system prompt. Use a RAG architecture to look up generic text questions and otherwise leverage the information in the system prompt."
+    ],
+    "correct_answer": "B",
+    "category": "Agent-Based System Design"
+  },
+  {
+    "question_number": 21,
+    "question": "A Generative AI Engineer has been asked to design an LLM-based application that accomplishes the following business objective: answer employee HR questions using HR PDF documentation. Which set of high level tasks should the Generative AI Engineer's system perform?",
+    "answers": [
+      "A. Calculate averaged embeddings for each HR document, compare embeddings to user query to find the best document. Pass the best document with the user query into an LLM with a large context window to generate a response to the employee.",
+      "B. Use an LLM to summarize HR documentation. Provide summaries of documentation and user query into an LLM with a large context window to generate a response to the user.",
+      "C. Create an interaction matrix of historical employee questions and HR documentation. Use ALS to factorize the matrix and create embeddings. Calculate the embeddings of new queries and use them to find the best HR documentation. Use an LLM to generate a response to the employee question based upon the documentation retrieved.",
+      "D. Split HR documentation into chunks and embed into a vector store. Use the employee question to retrieve best matched chunks of documentation, and use the LLM to generate a response to the employee based upon the documentation retrieved."
+    ],
+    "correct_answer": "D",
+    "category": "System Design for RAG"
+  },
+  {
+    "question_number": 22,
+    "question": "A Generative AI Engineer at an electronics company just deployed a RAG application for customers to ask questions about products that the company carries. However, they received feedback that the RAG response often returns information about an irrelevant product. What can the engineer do to improve the relevance of the RAG’s response?",
+    "answers": [
+      "A. Assess the quality of the retrieved context",
+      "B. Implement caching for frequently asked questions",
+      "C. Use a different LLM to improve the generated response",
+      "D. Use a different semantic similarity search algorithm"
+    ],
+    "correct_answer": "A",
+    "category": "RAG System Optimization"
+  },
+  {
+    "question_number": 23,
+    "question": "A Generative AI Engineer is developing a chatbot designed to assist users with insurance-related queries. The chatbot is built on a large language model (LLM) and is conversational. However, to maintain the chatbot's focus and to comply with company policy, it must not provide responses to questions about politics. Instead, when presented with political inquiries, the chatbot should respond with a standard message:\n\n“Sorry, I cannot answer that. I am a chatbot that can only answer questions around insurance.”\n\nWhich framework type should be implemented to solve this?",
+    "answers": [
+      "A. Safety Guardrail",
+      "B. Security Guardrail",
+      "C. Contextual Guardrail",
+      "D. Compliance Guardrail"
+    ],
+    "correct_answer": "D",
+    "category": "Guardrails & Policy Compliance"
+  },
+  {
+    "question_number": 24,
+    "question": "A Generative AI Engineer is using the code below to test setting up a vector store:\n\n```python\nfrom databricks.vector_search.client import VectorSearchClient\nvse = VectorSearchClient()\n\nvse.create_endpoint(\n  name=\"vector search test\",\n  endpoint_type=\"STANDARD\"\n)\n```\n\nAssuming they intend to use Databricks managed embeddings with the default embedding model, what should be the next logical function call?",
+    "answers": [
+      "A. vsc.get_index()",
+      "B. vsc.create_delta_sync_index()",
+      "C. vsc.create_direct_access_index()",
+      "D. vse.similarity_search()"
+    ],
+    "correct_answer": "B",
+    "category": "Databricks / Vector Search"
+  },
+   {
+    "question_number": 25,
+    "question": "A Generative AI Engineer is tasked with deploying an application that takes advantage of a custom MLflow Pyfunc model to return some interim results. How should they configure the endpoint to pass the secrets and credentials?",
+    "answers": [
+      "A. Use spark.conf.set()",
+      "B. Pass variables using the Databricks Feature Store API",
+      "C. Add credentials using environment variables",
+      "D. Pass the secrets in plain text"
+    ],
+    "correct_answer": "C",
+    "category": "Deployment / Security"
+  },
+  {
+    "question_number": 26,
+    "question": "A Generative AI Engineer wants to build an LLM-based solution to help a restaurant improve its online customer experience with bookings by automatically handling common customer inquiries. The goal of the solution is to minimize escalations to human intervention and phone calls while maintaining a personalized interaction. To design the solution, the Generative AI Engineer needs to define the input data to the LLM and the task it should perform.\n\nWhich input/output pair will support their goal?",
+    "answers": [
+      "A. Input: Online chat logs; Output: Group the chat logs by users, followed by summarizing each user's interactions",
+      "B. Input: Online chat logs; Output: Buttons that represent choices for booking details",
+      "C. Input: Customer reviews; Output: Classify review sentiment",
+      "D. Input: Online chat logs; Output: Cancellation options"
+    ],
+    "correct_answer": "B",
+    "category": "LLM Application Design"
+  },
+  {
+    "question_number": 27,
+    "question": "What is an effective method to preprocess prompts using custom code before sending them to an LLM?",
+    "answers": [
+      "A. Directly modify the LLM’s internal architecture to include preprocessing steps",
+      "B. It is better not to introduce custom code to preprocess prompts as the LLM has not been trained with examples of the preprocessed prompts",
+      "C. Rather than preprocessing prompts, it's more effective to postprocess the LLM outputs to align the outputs to desired outcomes",
+      "D. Write a MLflow PyFunc model that has a separate function to process the prompts"
+    ],
+    "correct_answer": "D",
+    "category": "Prompt Engineering / Preprocessing"
+  },
+  {
+    "question_number": 28,
+    "question": "A Generative AI Engineer is developing an LLM application that users can use to generate personalized birthday poems based on their names. Which technique would be most effective in safeguarding the application, given the potential for malicious user inputs?",
+    "answers": [
+      "A. Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist",
+      "B. Reduce the time that the users can interact with the LLM",
+      "C. Ask the LLM to remind the user that the input is malicious but continue the conversation with the user",
+      "D. Increase the amount of compute that powers the LLM to process input faster"
+    ],
+    "correct_answer": "A",
+    "category": "Safety / Input Filtering"
+  },
+  {
+    "question_number": 29,
+    "question": "Which indicator should be considered to evaluate the safety of the LLM outputs when qualitatively assessing LLM responses for a translation use\n\ncase?",
+    "answers": [
+      "A. The ability to generate responses in code",
+      "B. The similarity to the previous language",
+      "C. The latency of the response and the length of text generated",
+      "D. The accuracy and relevance of the responses"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 30,
+    "question": "A Generative Al Engineer is developing a patient-facing healthcare-focused chatbot. If the patient's question is not a medical emergency, the\nchatbot should solicit more information from the patient to pass to the doctor's office and suggest a few relevant pre-approved medical articles\nfor reading. If the patient's question is urgent, direct the patient to calling their local emergency services.\n\nGiven the following user input:\n\n“| have been experiencing severe headaches and dizziness for the past two days.”\n\nWhich response is most appropriate for the chatbot to generate?",
+    "answers": [
+      "A. Here are a few relevant articles for your browsing. Let me know if you have questions after reading them.",
+      "B. Please call your local emergency services.",
+      "C. Headaches can be tough. Hope you feel better soon!",
+      "D. Please provide your age, recent activities, and any other symptoms you have noticed along with your headaches and dizziness."
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 31,
+    "question": "After changing the response generating LLM in a RAG pipeline from GPT-4 to a model with a shorter context length that the company self-hosts,\nthe Generative Al Engineer is getting the following error:\n\n{“error code”: “BAD REQUEST”, “message”: “Bad request: rpc error:\ncode = InvalidArgument desc = prompt token count (4595) cannot\nexceed 4096...%}\n\nWhat TWO solutions should the Generative Al Engineer implement without changing the response generating model? (Choose two.)",
+    "answers": [
+      "A. Use a smaller embedding model to generate embeddings",
+      "B. Reduce the maximum output tokens of the new model",
+      "C. Decrease the chunk size of embedded documents",
+      "D. Reduce the number of records retrieved from the vector database",
+      "E. Retrain the response generating model using ALiBi"
+    ],
+    "correct_answer": "CD",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 32,
+    "question": "A Generative Al Engineer is building a system which will answer questions on latest stock news articles.\nWhich will NOT help with ensuring the outputs are relevant to financial news?",
+    "answers": [
+      "A. Implement a comprehensive guardrail framework that includes policies for content filters tailored to the finance sector.",
+      "B. Increase the compute to improve processing speed of questions to allow greater relevancy analysis",
+      "C. Implement a profanity filter to screen out offensive language.",
+      "D. Incorporate manual reviews to correct any problematic outputs prior to sending to the users"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 33,
+    "question": "A Generative Al Engineer is building a RAG application that answers questions about internal documents for the company SnoPen Al.\n\nThe source documents may contain a significant amount of irrelevant content, such as advertisements, sports news, or entertainment news, or\ncontent about other companies.\n\nWhich approach is advisable when building a RAG application to achieve this goal of filtering irrelevant information?",
+    "answers": [
+      "A. Keep all articles because the RAG application needs to understand non-company content to avoid answering questions about them.",
+      "B. Include in the system prompt that any information it sees will be about SnoPenAl, even if no data filtering is performed.  |",
+      "C. Include in the system prompt that the application is not supposed to answer any questions unrelated to SnoPen Al.",
+      "D. Consolidate all SnoPen Al related documents into a single chunk in the vector database."
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 34,
+    "question": "A Generative Al Engineer has successfully ingested unstructured documents and chunked them by document sections. They would like to store\nthe chunks in a Vector Search index. The current format of the dataframe has two columns: (i) original document file name (ii) an array of text\nchunks for each document.\n\nWhat is the most performant way to store this dataframe?",
+    "answers": [
+      "A. Split the data into train and test set, create a unique identifier for each document, then save to a Delta table",
+      "B. Flatten the dataframe to one chunk per row, create a unique identifier for each row, and save to a Delta table",
+      "C. First create a unique identifier for each document, then save to a Delta table",
+      "D. Store each chunk as an independent JSON file in Unity Catalog Volume. For each JSON file, the key is the document section name and the value is the array of text chunks for that section"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 35,
+    "question": "A Generative Al Engineer has created a RAG application which can help employees retrieve answers from an internal knowledge base, such as\nConfluence pages or Google Drive. The prototype application is now working with some positive feedback from internal company testers. Now the\nGenerative Al Engineer wants to formally evaluate the system's performance and understand where to focus their efforts to further improve the\nsystem.\n\nHow should the Generative Al Engineer evaluate the system?",
+    "answers": [
+      "A. Use cosine similarity score to comprehensively evaluate the quality of the final generated answers.",
+      "B. Curate a dataset that can test the retrieval and generation components of the system separately. Use MLflow’s built in evaluation metrics to perform the evaluation on the retrieval and generation components.",
+      "C. Benchmark multiple LLMs with the same data and pick the best LLM for the job.",
+      "D. Use an LLM-as-a-judge to evaluate the quality of the final answers generated."
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 36,
+    "question": "A Generative Al Engineer has already trained an LLM on Databricks and it is now ready to be deployed.\nWhich of the following steps correctly outlines the easiest process for deploying a model on Databricks?",
+    "answers": [
+      "A. Log the model as a pickle object, upload the object to Unity Catalog Volume, register it to Unity Catalog using MLflow, and start a serving endpoint",
+      "B. Log the model using MLflow during training, directly register the model to Unity Catalog using the MLflow API, and start a serving endpoint",
+      "C. Save the model along with its dependencies in a local directory, build the Docker image, and run the Docker container",
+      "D. Wrap the LLM’s prediction function into a Flask application and serve using Gunicorn"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 37,
+    "question": "A Generative Al Engineer developed an LLM application using the provisioned throughput Foundation Model API. Now that the application is ready\nto be deployed, they realize their volume of requests are not sufficiently high enough to create their own provisioned throughput endpoint. They\nwant to choose a strategy that ensures the best cost-effectiveness for their application.\n\nWhat strategy should the Generative Al Engineer use?",
+    "answers": [
+      "A. Switch to using External Models instead",
+      "B. Deploy the model using pay-per-token throughput as it comes with cost guarantees",
+      "C. Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
+      "D. Throttle the incoming batch of requests manually to avoid rate limiting issues"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 38,
+    "question": "A Generative Al Engineer is building an LLM to generate article summaries in the form of a type of poem, such as a haiku, given the article\ncontent. However, the initial output from the LLM does not match the desired tone or style.\nWhich approach will NOT improve the LLM’s response to achieve the desired response?",
+    "answers": [
+      "A. Provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style",
+      "B. Use a neutralizer to normalize the tone and style of the underlying documents",
+      "C. Include few-shot examples in the prompt to the LLM",
+      "D. Fine-tune the LLM on a dataset of desired tone and style"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 39,
+    "question": "A Generative Al Engineer is creating an LLM-powered application that will need access to up-to-date news articles and stock prices.\nThe design requires the use of stock prices which are stored in Delta tables and finding the latest relevant news articles by searching the internet.\nHow should the Generative Al Engineer architect their LLM system?",
+    "answers": [
+      "A. Use an LLM to summarize the latest news articles and lookup stock tickers from the summaries to find stock prices.",
+      "B. Query the Delta table for volatile stock prices and use an LLM to generate a search query to investigate potential causes of the stock volatility.",
+      "C. Download and store news articles and stock price information in a vector store. Use a RAG architecture to retrieve and generate at runtime.",
+      "D. Create an agent with tools for SQL querying of Delta tables and web searching, provide retrieved values to an LLM for generation of  response."
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 40,
+    "question": "A Generative Al Engineer is designing a chatbot for a gaming company that aims to engage users on its platform while its users play online video\ngames.\nWhich metric would help them increase user engagement and retention for their platform?",
+    "answers": [
+      "A. Randomness",
+      "B. Diversity of responses (‘Most Voted }",
+      "C. Lack of relevance",
+      "D. Repetition of responses"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 41,
+    "question": "A company has a typical RAG-enabled, customer-facing chatbot on its website.\n\nSelect the correct sequence of components a user's questions will go through before the final output is returned. Use the diagram above for\nreference.",
+    "answers": [
+      "A. 1.embedding model, 2.vector search, 3.context-augmented prompt, 4.response-generating LLM",
+      "B. 1.context-augmented prompt, 2.vector search, 3.embedding model, 4.response-generating LLM",
+      "C. 1.response-generating LLM, 2.vector search, 3.context-augmented prompt, 4.embedding model",
+      "D. 1.response-generating LLM, 2.context-augmented prompt, 3.vector search, 4.embedding model"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 42,
+    "question": "A team wants to serve a code generation model as an assistant for their software developers. It should support multiple programming languages.\nQuality is the primary objective.\nWhich of the Databricks Foundation Model APIs, or models available in the Marketplace, would be the best fit?",
+    "answers": [
+      "A. Llama2-70b",
+      "B. BGE-large",
+      "C. MPT-7b",
+      "D. CodeLlama-34B"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 43,
+    "question": "A Generative Al Engineer is building a RAG application that will rely on context retrieved from source documents that are currently in PDF format.\nThese PDFs can contain both text and images. They want to develop a solution using the least amount of lines of code.\nWhich Python package should be used to extract the text from the source documents?",
+    "answers": [
+      "A. flask",
+      "B. beautifulsoup",
+      "C. unstructured",
+      "D. numpy  Correct"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 44,
+    "question": "A Generative Al Engineer received the following business requirements for an external chatbot.\n\nThe chatbot needs to know what types of questions the user asks and routes to appropriate models to answer the questions. For example, the\nuser might ask about upcoming event details. Another user might ask about purchasing tickets for a particular event.\n\nWhat is an ideal workflow for such a chatbot?",
+    "answers": [
+      "A. The chatbot should only look at previous event information",
+      "B. There should be two different chatbots handling different types of user queries.",
+      "C. The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it's an upcoming event question, send the query to a text-to-SQL model. If it’s about ticket purchasing, the customer  should be redirected to a payment platform.",
+      "D. The chatbot should only process payments"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 45,
+    "question": "A Generative Al Engineer is tasked with developing an application that is based on an open source large language model (LLM). They need a\nfoundation LLM with a large context window.\nWhich model fits this need?",
+    "answers": [
+      "A. DistiIBERT",
+      "B. MPT-30B",
+      "C. Llama2-70B",
+      "D. DBRX"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 46,
+    "question": "A Generative Al Engineer is building an LLM-based application that has an important transcription (speech-to-text) task. Speed is essential for the\nsuccess of the application.\n\nWhich open Generative Al models should be used?",
+    "answers": [
+      "A. DBRX",
+      "B. MPT-30B-Instruct",
+      "C. Llama-2-70b-chat-hf",
+      "D. whisper-large-v3 (1.6B)"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 47,
+    "question": "A Generative Al Engineer has a provisioned throughput model serving endpoint as part of a RAG application and would like to monitor the serving\nendpoint’s incoming requests and outgoing responses.\n\nWhich Databricks feature should they use?",
+    "answers": [
+      "A. AutoML",
+      "B. Vector Search",
+      "C. Inference Tables",
+      "D. Feature Serving"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 48,
+    "question": "A Generative Al Engineer is deciding between using LSH (Locality Sensitive Hashing) and HNSW (Hierarchical Navigable Small World) for indexing\ntheir vector database. Their top priority is semantic accuracy.\n\nWhich approach should the Generative Al Engineer use to evaluate these two techniques?\n\n[",
+    "answers": [
+      "A. Compare the cosine similarities of the embeddings of returned results against those of a representative sample of test inputs  |",
+      "B. Compare the Bilingual Evaluation Understudy (BLEU) scores of returned results for a representative sample of test inputs",
+      "C. Compare the Recall-Oriented-Understudy for Gisting Evaluation (ROUGE) scores of returned results for a representative sample of test inputs",
+      "D. Compare the Levenshtein distances of returned results against a representative sample of test inputs"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 49,
+    "question": "When developing an LLM application, it’s crucial to ensure that the data used for training the model complies with licensing requirements to avoid\nlegal risks.\n\nWhich action is most appropriate to avoid legal risks?",
+    "answers": [
+      "A. Only use data explicitly labeled with an open license and ensure the license terms are followed.",
+      "B. Any LLM outputs are reasonable to use because they do not reveal the original sources of data directly.",
+      "C. Reach out to the data curators directly to gain written consent for using their data.",
+      "D. Use any publicly available data as public data does not have legal restrictions."
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 50,
+    "question": "A Generative Al Engineer interfaces with an LLM with instruction-following capabilities trained on customer calls inquiring about product\navailability. The LLM should output “Success” if the product is available or “Fail” if not.\n\nWhich prompt allows the engineer to receive call classification labels correctly?",
+    "answers": [
+      "A. You are a helpful assistant that reads customer call transcripts. Walk through the transcript and think step-by-step if the customer's inquiries are addressed successfully. Answer “Success” if yes; otherwise, answer “Fail”.",
+      "B. You will be given a customer call transcript where the customer asks about product availability. Classify the call as “Success” if the product is available and “Fail” if the product is unavailable.",
+      "C. You will be given a customer call transcript where the customer asks about product availability. The outputs are either “Success” or “Fail”. Format the output in JSON, for example: {\"call_id\": \"123\", \"label\": \"Succes'}.",
+      "D. You will be given a customer call transcript. Answer “Success” if the customer call has been resolved successfully. Answer “Fail” if the call is redirected or if the question is not resolved."
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 51,
+    "question": "Which TWO chain components are required for building a basic LLM-enabled chat application that includes conversational capabilities, knowledge\nretrieval, and contextual memory? (Choose two.)",
+    "answers": [
+      "A. Vector Stores",
+      "B. Conversation Buffer Memory",
+      "C. External tools",
+      "D. Chat loaders",
+      "E. React Components"
+    ],
+    "correct_answer": "AB",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 52,
+    "question": "A Generative Al Engineer has written scalable PySpark code to ingest unstructured PDF documents and chunk them in preparation for storing ina\nDatabricks Vector Search index. Currently, the two columns of their dataframe include the original filename as a string and an array of text chunks\nfrom that document.\n\nWhat set of steps should the Generative Al Engineer perform to store the chunks in a ready-to-ingest manner for Databricks Vector Search?",
+    "answers": [
+      "A. Use PySpark's autoloader to apply a UDF across all chunks, formatting them in a JSON structure for Vector Search ingestion.",
+      "B. Flatten the dataframe to one chunk per row, create a unique identifier for each row, and enable change feed on the output Delta table.",
+      "C. Utilize the original filename as the unique identifier and save the dataframe as is.  |",
+      "D. Create a unique identifier for each document, flatten the dataframe to one chunk per row and save to an output Delta table. "
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 5,
+    "question": "A Generative Al Engineer is designing an LLM-powered live sports commentary platform. The platform provides real-time updates and LLM-\ngenerated analyses for any users who would like to have live summaries, rather than reading a series of potentially outdated news articles.\nWhich tool below will give the platform access to real-time data for generating game analyses based on the latest game scores?",
+    "answers": [
+      "A. DatabricksIQ",
+      "B. Foundation Model APIs",
+      "C. Feature Serving",
+      "D. AutoML"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 6,
+    "question": "A Generative Al Engineer has a provisioned throughput model serving endpoint as part of a RAG application and would like to monitor the serving\nendpoint's incoming requests and outgoing responses. The current approach is to include a micro-service in between the endpoint and the user\ninterface to write logs to a remote server.\n\nWhich Databricks feature should they use instead which will perform the same task?",
+    "answers": [
+      "A. Vector Search",
+      "B. Lakeview",
+      "C. DBSQL",
+      "D. Inference Tables"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 7,
+    "question": "A Generative Al Engineer is tasked with improving the RAG quality by addressing its inflammatory outputs.\nWhich action would be most effective in mitigating the problem of offensive text outputs?",
+    "answers": [
+      "A. Increase the frequency of upstream data updates",
+      "B. Inform the user of the expected RAG behavior",
+      "C. Restrict access to the data sources to a limited number of users",
+      "D. Curate upstream data properly that includes manual review before it is fed into the RAG system"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 8,
+    "question": "A Generative Al Engineer is creating an LLM-based application. The documents for its retriever have been chunked to a maximum of 512 tokens\neach. The Generative Al Engineer knows that cost and latency are more important than quality for this application. They have several context\nlength levels to choose from.\n\nWhich will fulfill their need?",
+    "answers": [
+      "A. context length 514; smallest model is 0.44GB and embedding dimension 768",
+      "B. context length 2048: smallest model is 11GB and embedding dimension 2560",
+      "C. context length 32768: smallest model is 14GB and embedding dimension 4096",
+      "D. context length 512: smallest model is 0.13GB and embedding dimension 384"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 53,
+    "question": "A Generative Al Engineer is asked to build an LLM application that would excel at code generation. They need to select a model that has been\nspecifically trained to generate code.\n\nWhich model would likely produce the best results out of the box?",
+    "answers": [
+      "A. CodeLlama-34b-Instruct-hf",
+      "B. Mixtral-8x7B-v0.1",
+      "C. Llama-2-70b-hf",
+      "D. mpt-7b-8k-instruct"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 54,
+    "question": "A Generative Al Engineer needs to design an LLM pipeline to conduct multi-stage reasoning that leverages external tools. To be effective at this,\nthe LLM will need to plan and adapt actions while performing complex reasoning tasks.\n\nWhich approach will do this?",
+    "answers": [
+      "A. Train the LLM to generate a single, comprehensive response without interacting with any external tools, relying solely on its pre-trained knowledge.",
+      "B. Use a Chain-of-Thought (CoT) prompting technique to guide the LLM through a series of reasoning steps, then manually input the results from external tools for the final answer.",
+      "C. Implement a framework like ReAct, which allows the LLM to generate reasoning traces and perform task-specific actions that leverage external tools if necessary.",
+      "D. Encourage the LLM to make multiple API calls in sequence without planning or structuring the calls, allowing the LLM to decide when and how to use external tools spontaneously."
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 55,
+    "question": "A Generative Al Engineer at an automotive company would like to build a question-answering chatbot for customers to inquire about their\nvehicles. They have a database containing various documents of different vehicle makes, their hardware parts, and common maintenance\ninformation.\n\nWhich of the following components will NOT be useful in building such a chatbot?",
+    "answers": [
+      "A. Invite users to submit long, rather than concise, questions",
+      "B. Response-generating LLM",
+      "C. Embedding model",
+      "D. Vector database"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 56,
+    "question": "A Generative Al Engineer is building an LLM to generate article headlines given the article content. However, the initial output from the LLM does\nnot match the desired tone or style.\n\nWhich approach would be most effective for adjusting the LLM’s response to achieve the desired response?",
+    "answers": [
+      "A. Exclude any article headlines that do not match the desired output",
+      "B. Fine-tune the LLM on a dataset of desired tone and style",
+      "C. Provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style",
+      "D. All of the above"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 57,
+    "question": "A Generative Al Engineer is creating a customer support bot that should respond differently to an end user based on the sentiment in their initial\nmessage. For example, if the end user’s message was angry, the bot should try to de-escalate their negative sentiments as it solves the customer\nquery. They want to make sure their approach follows best practices.\n\nWhich approach will do this?",
+    "answers": [
+      "A. Use an encoder-only LLM model to both detect sentiment and generate replies based upon the detected sentiment.",
+      "B. Implement a RAG architecture for how to respond to users depending on detected sentiment.",
+      "C. Use linear regression model to classify sentiment and feed the result to a system prompt for the LLM to respond.",
+      "D. Create a chain which first uses an LLM to classify sentiment, then changes system prompt for the customer interaction LLM based upon the initial customer query sentiment."
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 58,
+    "question": "A Generative Al Engineer is ready to deploy an LLM application written using Foundation Model APIs. They want to follow security best practices\nfor production scenarios.\n\nWhich authentication method should they choose?",
+    "answers": [
+      "A. Use OAuth machine-to-machine authentication",
+      "B. Use an access token belonging to service principals",
+      "C. Use an access token belonging to any workspace user",
+      "D. Use a frequently rotated access token belonging to either a workspace user or a service principal"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 59,
+    "question": "A Generative Al Engineer is developing a RAG system for their company to perform internal document Q&A for structured HR policies, but the\nanswers returned are frequently incomplete and unstructured. It seems that the retriever is not returning all relevant context. The Generative Al\nEngineer has experimented with different embedding and response generating LLMs but that did not improve results.\n\nWhich TWO options could be used to improve the response quality? (Choose two.)",
+    "answers": [
+      "A. Add the section header as a prefix to chunks",
+      "B. Split the document by sentence",
+      "C. Use a larger embedding model",
+      "D. Increase the document chunk size",
+      "E. Fine tune the response generation model"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 60,
+    "question": "A Generative Al Engineer is building a production-ready LLM system which replies directly to customers. The solution makes use of the\nFoundation Model API via provisioned throughput. They are concerned that the LLM could potentially respond in a toxic or otherwise unsafe way.\nThey also wish to perform this with the least amount of effort.\n\nWhich approach will do this?",
+    "answers": [
+      "A. Ask users to report unsafe responses",
+      "B. Host Llama Guard on Foundation Model API and use it to detect unsafe responses.",
+      "C. Add some LLM calls to their chain to detect unsafe content before returning text",
+      "D. Add a regex expression on inputs and outputs to detect unsafe responses."
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 61,
+    "question": "A Generative Al Engineer would like an LLM to parse and extract the following information: date, sender email, and order ID. The output should be\n\nformatted into JSON. Here's an email sample:\n\nThey need a prompt that will extract and output the required information in JSON with the highest level of output accuracy.\n\nWhich prompt will do that?",
+    "answers": [
+      "A. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in a human-readable format.",
+      "B. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format.",
+      "C. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here's an example: {\"date\":\"April 16, 2024\", \"sender_email\":\"sarah.lee925@gmail.com\", \"order_id\":\"RE987D\"}",
+      "D. You will receive customer emails and need to extract date, sender email, and order lYou should return the date, sender email, and order ID"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 62,
+    "question": "A Generative Al Engineer has built an LLM-based system that will automatically translate user text between two languages. They now want to\nbenchmark multiple LLM’s on this task and pick the best one. They have an evaluation set with known high quality translation examples. They\nwant to evaluate each LLM using the evaluation set with a performant metric.\n\nWhich metric should they choose for this evaluation?",
+    "answers": [
+      "A. BLEU metric",
+      "B. NDCG metric",
+      "C. ROUGE metric",
+      "D. RECALL metric"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 63,
+    "question": "A Generative Al Engineer is using an LLM to classify species of edible mushrooms based on text descriptions of certain features. The model is\nreturning accurate responses in testing and the Generative Al Engineer is confident they have the correct list of possible labels, but the output\nfrequently contains additional reasoning in the answer when the Generative Al Engineer only wants to return the label with no additional text.\n\nWhich action should they take to elicit the desired behavior from this LLM?",
+    "answers": [
+      "A. Use few shot prompting to instruct the model on expected output format",
+      "B. Use zero shot prompting to instruct the model on expected output format",
+      "C. Use zero shot chain-of-thought prompting to prevent a verbose output format",
+      "D. Use a system prompt to instruct the model to be succinct in its answer"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 64,
+    "question": "A Generative Al Engineer is working with a retail company that wants to enhance its customer experience by automatically handling common\ncustomer inquiries. They are working on an LLM-powered Al solution that should improve response times while maintaining a personalized\ninteraction. They want to define the appropriate input and LLM task to do this.\n\nWhich input/output pair will do this?",
+    "answers": [
+      "A. Input: Customer service chat logs; Output: Group the chat logs by users, followed by summarizing each user's interactions, then respond  Most Voted",
+      "B. Input: Customer service chat logs; Output: Find the answers to similar questions and respond with a summary",
+      "C. Input: Customer reviews; Output: Classify review sentiment",
+      "D. Input: Customer reviews; Output: Group the reviews by users and aggregate per-user average rating, then respond"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 65,
+    "question": "A Generative Al Engineer is developing a RAG application and would like to experiment with different embedding models to improve the\napplication performance.\n\nWhich strategy for picking an embedding model should they choose?",
+    "answers": [
+      "A. Pick an embedding model with multilingual support to support potential multilingual user questions",
+      "B. Pick the most recent and most performant open LLM released at the time",
+      "C. Pick an embedding model trained on related domain knowledge",
+      "D. Pick the embedding model ranked highest on the Massive Text Embedding Benchmark (MTEB) leaderboard hosted by HuggingFace"
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 66,
+    "question": "A Generative Al Engineer wants their finetuned LLMs in their prod Databricks workspace available for testing in their dev workspace as well. All of\ntheir workspaces are Unity Catalog enabled and they are currently logging their models into the Model Registry in MLflow.\n\nWhat is the most cost-effective and secure option for the Generative Al Engineer to accomplish their goal?",
+    "answers": [
+      "A. Use an external model registry which can be accessed from all workspaces.",
+      "B. Use MLflow to log the model directly into Unity Catalog, and enable READ access in the dev workspace to the model.",
+      "C. Setup a duplicate training pipeline in dev, so that an identical model is available in dev.",
+      "D. Setup a script to export the model from prod and import it to dev."
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 67,
+    "question": "A Generative Al Engineer has just deployed an LLM application at a manufacturing company that assists with answering customer service\ninquiries. They need to identity the key enterprise metrics to monitor the application in production.\n\nWhich is NOT a metric they will implement for their customer service LLM application in production?",
+    "answers": [
+      "A. Massive Multi-task Language Understanding (MMLU) score",
+      "B. Number of customer inquiries processed per unit of time",
+      "C. Factual accuracy of the response",
+      "D. Time taken for LLM to generate a response"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 68,
+    "question": "Generative Al Engineer is helping a cinema extend its website's chat bot to be able to respond to questions about specific showtimes for movies\ncurrently playing at their local theater. They already have the location of the user provided by location services to their agent, and a Delta table\nwhich is continually updated with the latest showtime information by location. They want to implement this new capability in their RAG\napplication.\n\nWhich option will do this with the least effort and in the most performant way?",
+    "answers": [
+      "A. Create a Feature Serving Endpoint from a FeatureSpec that references an online store synced from the Delta table. Query the Feature Serving Endpoint as part of the agent logic / too! implementation.",
+      "B. Query the Delta table directly via a SQL query constructed from the user's input using a text-to-SQL LLM in the agent logic / tool implementation.",
+      "C. Set up a task in Databricks Workflows to write the information in the Delta table periodically to an external database such as MySQL and query the information from there as part of the agent logic / too! implementation.",
+      "D. Write the Delta table contents to a text column, then embed those texts using an embedding model and store these in the vector index. Look up the information based on the embedding as part of the agent logic / tool implementation."
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 69,
+    "question": "Generative Al Engineer needs to build an LLM application that can understand medical documents, including recently published ones. They want\nto select an open model available on HuggingFace’s model hub.\n\nWhich step is most appropriate for selecting an LLM?",
+    "answers": [
+      "A. Pick any model in the Mistral family, as Mistral models are good with all types of use cases",
+      "B. Select a model based on the highest number of downloads, as this indicates popularity, reliability, and general suitability",
+      "C. Select a model that is most recently uploaded, as this indicates the model is the newest and highly likely to be the most performant",
+      "D. Check for the model and training data description to identify if the model is trained on any medical data."
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 70,
+    "question": "Generative Al Engineer is building a RAG application that answers questions about technology-related news articles. The source documents may\ncontain a significant amount of irrelevant content, such as advertisements, sports news, or entertainment news.\n\nWhich approach is NOT advisable for building a RAG application focused on answering technology-only questions?",
+    "answers": [
+      "A. Include in the system prompt that the application is not supposed to answer any questions unrelated to technology.",
+      "B. Filter out irrelevant news articles in the retrieval process.",
+      "C. Keep all news articles because the RAG application needs to understand non-technological content to avoid answering questions about them.",
+      "D. Filter out irrelevant news articles in the upstream document database."
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 71,
+    "question": "A Generative Al Engineer is building a RAG application that will rely on context retrieved from source documents that are currently in HTML\nformat. They want to develop a solution using the least amount of lines of code.\n\nWhich Python package should be used to extract the text from the source documents?",
+    "answers": [
+      "A. pytesseract",
+      "B. numpy",
+      "C. pypdf2",
+      "D. beautifulsoup"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 72,
+    "question": "A Generative Al Engineer is building a RAG application for answering employee questions on company policies.\n\nWhat are the steps needed to build this RAG application and deploy it?",
+    "answers": [
+      "A. Ingest documents from a source -> Index the documents and saves to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> Evaluate model -> LLM generates a response -> Deploy it using Model Serving",
+      "B. User submits queries against an LLM -> Ingest documents from a source -> Index the documents and save to Vector Search -> LLM retrieves relevant documents -> LLM generates a response -> Evaluate model -> Deploy it using Model Serving",
+      "C. Ingest documents from a source -> Index the documents and save to Vector Search -> Evaluate model -> Deploy it using Model Serving -> User submits queries against an LLM -> LLM retrieves relevant documents -> LLM generates a response",
+      "D. Ingest documents from a source -> Index the documents and save to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> LLM generates a response -> Evaluate model -> Deploy it using Model Serving"
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 73,
+    "question": "A Generative Al Engineer who was prototyping an LLM system accidentally ran thousands of inference queries against a Foundation Model\nendpoint over the weekend. They want to take action to prevent this from unintentionally happening again in the future.\n\nWhat action should they take?",
+    "answers": [
+      "A. Use prompt engineering to instruct the LLM endpoints to refuse too many subsequent queries.",
+      "B. Require that all development code which interfaces with a Foundation Model endpoint must be reviewed by a Staff level engineer before execution.",
+      "C. Build a pyfunc model which proxies to the Foundation Model endpoint and add throttling within the pyfune model.",
+      "D. Configure rate limiting on the Foundation Model endpoints."
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 74,
+    "question": "A Generative Al Engineer is setting up a Databricks Vector Search that will lookup news articles by topic within 10 days of the date specified. An\nexample query might be “Tell me about monster truck news around January 5th 1992”. They want to do this with the least amount of effort.\n\nHow can they set up their Vector Search index to support this use case?",
+    "answers": [
+      "A. Create separate indexes by topic and add a classifier model to appropriately pick the best index.  [",
+      "B. Include metadata columns for article date and topic to support metadata filtering. |",
+      "C. Pass the query directly to the vector search index and return the best articles.",
+      "D. Split articles by 10 day blocks and return the block closest to the query."
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 75,
+    "question": "A Generative Al Engineer developed an LLM application using the pay-per-token Foundation Model API. Now that the application is ready to be\ndeployed, they would like to ensure the model endpoint can serve high incoming volumes of requests in production.\n\nWhat should the Generative Al Engineer consider?",
+    "answers": [
+      "A. Switch to using External Models instead",
+      "B. Throttle the incoming batch of requests manually to avoid rate limiting issues",
+      "C. Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
+      "D. Deploy the model using provisioned throughput as it comes with performance guarantees"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 76,
+    "question": "A Generative Al Engineer at a home appliance company has been asked to design an LLM based application that accomplishes the following\nbusiness objective: answer customer questions on home appliances using the associated instruction manuals.\n\nWhich set of high-level tasks should the Generative Al Engineer's system perform?",
+    "answers": [
+      "A. Split instruction manuals into chunks and embed into a vector store. Use the question to retrieve best matched chunks of manual, and use the LLM to generate a response to the user based upon the manual retrieved.",
+      "B. Create an interaction matrix of historical user questions and appliance instruction manuals. Use ALS to factorize the matrix and create embeddings. Calculate the embeddings of new queries and use them to find the best manual. Use an LLM to generate a response to the question based upon the manual retrieved.",
+      "C. Calculate averaged embeddings for each instruction manual, compare embeddings to user query to find the best manual. Pass the best manual with user query into an LLM with a large context window to generate a response to the employee.",
+      "D. Use an LLM to summarize all of the instruction manuals. Provide summaries of each manual and user query into an LLM with a large context window to generate a response to the user. "
+    ],
+    "correct_answer": "A",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 77,
+    "question": "A Generative Al Engineer is developing an LLM application to interact with users to provide personalized movie recommendations.\n\nGiven the potential for malicious user inputs, which technique would be most effective in safeguarding the application?",
+    "answers": [
+      "A. Reduce the time that the users can interact with the LLM",
+      "B. Increase the amount of compute that powers the LLM to process input faster",
+      "C. Ask the LLM to remind the user that the input is malicious but continue the conversation with the user",
+      "D. Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 78,
+    "question": "A Generative Al Engineer received the following business requirements for an internal chatbot. The internal chatbot needs to know what types of\nquestions the user asks and route them to appropriate models to answer the questions. For example, the user might ask about historical failure\nrates of a specific electrical part. Another user might ask about how to troubleshoot a piece of electrical equipment.\n\nAvailable data sources include a database of electrical equipment PDF manuals and also a table with information on when an electrical part\nexperiences failure.\n\nWhich workflow supports such a chatbot?",
+    "answers": [
+      "A. Parse the electrical equipment PDF manuals into a table of question and response pairs. That way, the same chatbot can query tables easily to answer questions about both historical failure rates and equipment troubleshooting.",
+      "B. The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it's a historical failure rate question, send the query to a text-to-SQL model. If it's a troubleshooting question, then send the query to another model that summarizes the equipment-specific document and generates the response.",
+      "C. There should be two different chatbots handling different types of user queries.",
+      "D. The table with electrical part failures should be converted into a text document first. That way, the same chatbot can use the same document retrieval process to generate answers regardless of question types."
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 79,
+    "question": "A Generative Al Engineer is building a system that will answer questions on currently unfolding news topics. As such, it pulls information from a\nvariety of sources including articles and social media posts. They are concerned about toxic posts on social media causing toxic outputs from\ntheir system.\n\nWhich guardrail will limit toxic outputs?",
+    "answers": [
+      "A. Reduce the amount of context items the system will include in consideration for its response.",
+      "B. Use only approved social media and news accounts to prevent unexpected toxic data from getting to the LLM.",
+      "C. Log all LLM system responses and perform a batch toxicity analysis monthly.",
+      "D. Implement rate limiting."
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 80,
+    "question": "A Generative Al Engineer has created a RAG application which can help employees interpret HR documentation. The prototype application is now\nworking with some positive feedback from internal company testers. Now the Generative Al Engineer wants to formally evaluate the system's\nperformance and understand where to focus their efforts to further improve the system\n\nHow should the Generative Al Engineer evaluate the system?",
+    "answers": [
+      "A. Use ROUGE score to comprehensively evaluate the quality of the final generated answers.",
+      "B. Use an LLM-as-a-judge to evaluate the quality of the final answers generated.",
+      "C. Curate a dataset that can test the retrieval and generation components of the system separately. Use MLflow’s built in evaluation metrics to perform the evaluation on the retrieval and generation components.",
+      "D. Benchmark multiple LLMs with the same data and pick the best LLM for the job."
+    ],
+    "correct_answer": "C",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 9,
+    "question": "A small and cost-conscious startup in the cancer research field wants to build a RAG application using Foundation Model APIs.\nWhich strategy would allow the startup to build a good-quality RAG application while being cost-conscious and able to cater to customer needs?",
+    "answers": [
+      "A. Limit the number of relevant documents available for the RAG application to retrieve from",
+      "B. Pick a smaller LLM that is domain-specific",
+      "C. Limit the number of queries a customer can send per day",
+      "D. Use the largest LLM possible because that gives the best performance for any general queries"
+    ],
+    "correct_answer": "B",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 10,
+    "question": "A Generative Al Engineer is responsible for developing a chatbot to enable their company’s internal HelpDesk Call Center team to more quickly find\nrelated tickets and provide resolution. While creating the GenAl application work breakdown tasks for this project, they realize they need to start\nplanning which data sources (either Unity Catalog volume or Delta table) they could choose for this application. They have collected several\ncandidate data sources for consideration: call_rep_history: a Delta table with primary keys representative_id, call_id. This table is maintained to\ncalculate representatives’ call resolution from fields call_duration and call start_time. transcript Volume: a Unity Catalog Volume of all recordings\nas a *.wav files, but also a text transcript as *.txt files. call_cust_history: a Delta table with primary keys customer_id, cal1_id. This table is\nmaintained to calculate how much internal customers use the HelpDesk to make sure that the charge back model is consistent with actual service\nuse. call_detail: a Delta table that includes a snapshot of all call details updated hourly. It includes root_cause and resolution fields, but those\nfields may be empty for calls that are still active. maintenance_schedule - a Delta table that includes a listing of both HelpDesk application\noutages as well as planned upcoming maintenance downtimes.\n\nThey need sources that could add context to best identify ticket root cause and resolution.\n\nWhich TWO sources do that? (Choose two.)",
+    "answers": [
+      "A. call_cust_history",
+      "B. maintenance_schedule",
+      "C. call_rep_history",
+      "D. call_detail",
+      "E. transcript Volume"
+    ],
+    "correct_answer": "DE",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 11,
+    "question": "What is the most suitable library for building a multi-step LLM-based workflow?",
+    "answers": [
+      "A. Pandas",
+      "B. TensorFlow",
+      "C. PySpark",
+      "D. LangChain"
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  },
+  {
+    "question_number": 12,
+    "question": "When developing an LLM application, it's crucial to ensure that the data used for training the model complies with licensing requirements to avoid\nlegal risks.\nWhich action is NOT appropriate to avoid legal risks?",
+    "answers": [
+      "A. Reach out to the data curators directly before you have started using the trained model to let them know.",
+      "B. Use any available data you personally created which is completely original and you can decide what license to use.",
+      "C. Only use data explicitly labeled with an open license and ensure the license terms are followed.",
+      "D. Reach out to the data curators directly after you have started using the trained model to let them know."
+    ],
+    "correct_answer": "D",
+    "category": "General AI / RAG"
+  }
+
+
+
+    
+]

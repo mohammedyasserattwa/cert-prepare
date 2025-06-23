@@ -5,6 +5,7 @@ import  Devops  from './Devops';
 import  DataBricksDataEngineer  from './DBDataEng';
 import GCPDataEng from './GCPDataEng';
 import { GCPMLEng } from './GCPMLEng';
+import DBGenAI from './DbGenAI';
 
 
 export const Home = () => {
@@ -21,6 +22,7 @@ export const Home = () => {
         {selected === "dbdataeng" && <DataBricksDataEngineer />}
         {selected === "gcpdataeng" && <GCPDataEng />}
         {selected === "gcpmleng" && <GCPMLEng />}
+        {selected === "dbgenai" && <DBGenAI />}
       </div>
     </div>
   );
