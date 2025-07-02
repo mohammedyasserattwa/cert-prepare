@@ -333,7 +333,7 @@
             "D.Set the prefetch option equal to the training batch size.",
             "E.Decrease the batch size argument in your transformation."
         ],
-        "correct_answer": "D",
+        "correct_answer": "AD",
         "category": ""
     },
     {
@@ -478,7 +478,7 @@
             "D.Change the search algorithm from Bayesian search to random search.",
             "E.Decrease the maximum number of trials during subsequent training phases."
         ],
-        "correct_answer": "E",
+        "correct_answer": "CE",
         "category": ""
     },
     {
@@ -1763,7 +1763,7 @@
             "D.Upsample or reweight your existing training data, and retrain the model",
             "E.Redeploy the model, and provide a label explaining the model's behavior to users."
         ],
-        "correct_answer": "D",
+        "correct_answer": "BD",
         "category": ""
     },
     {
@@ -2004,7 +2004,7 @@
             "D.Add more negative examples to the training set",
             "E.Reduce the maximum number of node hours for training"
         ],
-        "correct_answer": "B",
+        "correct_answer": "BC",
         "category": ""
     },
     {
@@ -3205,7 +3205,7 @@
             "D.Collect a stratified sample of production traffic to build the training dataset",
             "E.Conduct fairness tests across sensitive categories and demographics on the trained model"
         ],
-        "correct_answer": "D",
+        "correct_answer": "DE",
         "category": ""
     },
     {
